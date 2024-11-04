@@ -1,8 +1,15 @@
 package com.example.privatecurrency
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.privatecurrency.databinding.ActivityMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.URL
+import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,5 +21,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(binding.root)
+
+        binding.button.setOnClickListener {
+            // TODO:
+            val url = URL("https://itc.ua/articles/test-drajv-ds-7-e-tense-premyum-ne-za-vse-dengy-myra/")
+
+            lifecycleScope.launch {
+                val text = withContext(Dispatchers.IO) {
+                    url.readText(Charset.defaultCharset())
+                }
+
+                Log.d(TAG, "text: $text")
+            }
+
+        }
     }
+
+    val TAG = "XXXXX"
 }
