@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.privatecurrency.databinding.ActivityMainBinding
+import com.example.privatecurrency.retrofit.RetrofitObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -23,18 +24,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            // TODO:
-            val url = URL("https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5")
-
-            lifecycleScope.launch {
-                val text = withContext(Dispatchers.IO) {
-                    url.readText(Charset.defaultCharset())
-                }
-
-                Log.d(TAG, "text: $text")
+            retrofitObject?.getAndroid("7159a98ed69e3f84basd62b") {
+//            retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
+                Log.d(TAG, "onResponse: $it")
             }
-
         }
+    }
+
+    private var retrofitObject: RetrofitObject? = null
+    override fun onStart() {
+        super.onStart()
+        retrofitObject = RetrofitObject()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        retrofitObject = null
     }
 
     val TAG = "XXXXX"
