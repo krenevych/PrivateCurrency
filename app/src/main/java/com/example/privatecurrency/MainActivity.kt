@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             // TODO:
-            val url = URL("https://itc.ua/articles/test-drajv-ds-7-e-tense-premyum-ne-za-vse-dengy-myra/")
+            val url = URL("https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5")
 
             lifecycleScope.launch {
                 val text = withContext(Dispatchers.IO) {
