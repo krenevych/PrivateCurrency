@@ -3,14 +3,8 @@ package com.example.privatecurrency
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.example.privatecurrency.databinding.ActivityMainBinding
 import com.example.privatecurrency.retrofit.RetrofitObject
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.net.URL
-import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,10 +18,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            retrofitObject?.getAndroid("7159a98ed69e3f84basd62b") {
+            retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
 //            retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
                 Log.d(TAG, "onResponse: $it")
             }
+
+//            retrofitObject?.getOtherInfo() {
+//                Log.d(TAG, "onResponse: $it")
+//            }
         }
     }
 
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
+        retrofitObject?.onStop()
         retrofitObject = null
     }
 
