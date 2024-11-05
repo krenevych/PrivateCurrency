@@ -27,7 +27,27 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.currencyList.observe(this) {
             Log.d(TAG, "onCreate: $it")
+
+            if (it == null || it.isEmpty()) {
+                return@observe
+            }
+            with(binding) {
+                it[0].let { currency ->
+                    ccy.text = currency.ccy
+                    baseCcy.text = currency.baseCcy
+                    buy.text = currency.buy
+                    sale.text = currency.sale
+                }
+            }
+
+
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.fetchData()
     }
 
     val TAG = "XXXXX"
