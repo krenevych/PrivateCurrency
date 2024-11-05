@@ -5,8 +5,6 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.privatecurrency.databinding.ActivityMainBinding
-import com.example.privatecurrency.retrofit.RetrofitObject
-import com.example.privatecurrency.retrofit.RetrofitPrivate
 
 class MainActivity : AppCompatActivity() {
 
