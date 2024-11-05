@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.privatecurrency.databinding.ActivityMainBinding
 import com.example.privatecurrency.retrofit.RetrofitObject
+import com.example.privatecurrency.retrofit.RetrofitPrivate
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,17 +19,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.button.setOnClickListener {
-            retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
-                Log.d(TAG, "onResponse: $it")
+            retrofitObject?.getCurrencyExchange {
+                Log.d(TAG, "Currency: $it")
+
+                it?.forEach{currency ->
+                    Log.d(TAG, "$currency")
+                }
             }
 
         }
     }
 
-    private var retrofitObject: RetrofitObject? = null
+    private var retrofitObject: RetrofitPrivate? = null
     override fun onStart() {
         super.onStart()
-        retrofitObject = RetrofitObject()
+        retrofitObject = RetrofitPrivate()
     }
 
     override fun onStop() {

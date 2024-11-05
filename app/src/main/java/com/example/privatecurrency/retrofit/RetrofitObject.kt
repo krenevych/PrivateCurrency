@@ -2,11 +2,6 @@ package com.example.privatecurrency.retrofit
 
 import android.util.Log
 import com.example.privatecurrency.item.AndroidItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +13,7 @@ class RetrofitObject {
 
 //    https://api.npoint.io/7159a98ed69e3f84b62b
 
-    private val BASE_URL = "https://api.npoint.io/"
+    private val BASE_URL = "https://api.npoint.io/"  // обовʼязково закінчується слешем '/'
 
     private var retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
