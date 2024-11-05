@@ -19,13 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.button.setOnClickListener {
             retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
-//            retrofitObject?.getAndroid("7159a98ed69e3f84b62b") {
                 Log.d(TAG, "onResponse: $it")
             }
 
-//            retrofitObject?.getOtherInfo() {
-//                Log.d(TAG, "onResponse: $it")
-//            }
         }
     }
 
@@ -37,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-        retrofitObject?.onStop()
         retrofitObject = null
     }
 
