@@ -1,18 +1,20 @@
-package com.example.privatecurrency
+package com.example.privatecurrency.presentation
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.privatecurrency.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.fetchData()
         }
 
-        viewModel.currencyList.observe(this) {
+        viewModel.liveData.observe(this) {
             Log.d(TAG, "onCreate: $it")
 
             if (it == null || it.isEmpty()) {

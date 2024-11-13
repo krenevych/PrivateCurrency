@@ -1,6 +1,6 @@
-package com.example.privatecurrency.retrofit
+package com.example.privatecurrency.data.retrofit
 
-import com.example.privatecurrency.item.CurrencyItem
+import com.example.privatecurrency.domain.item.CurrencyItem
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
