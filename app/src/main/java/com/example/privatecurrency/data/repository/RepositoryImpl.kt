@@ -15,8 +15,6 @@ class RepositoryImpl @Inject constructor(
     private val service: ServicePrivate
 ) : Repository {
 
-//    private val retrofitObject = RetrofitPrivate()
-
     private val _currencyList = MutableLiveData<List<CurrencyItem>>(listOf())
     override val liveData: LiveData<List<CurrencyItem>>
         get() = _currencyList

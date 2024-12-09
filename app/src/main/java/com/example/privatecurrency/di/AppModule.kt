@@ -1,15 +1,12 @@
 package com.example.privatecurrency.di
 
-import com.example.privatecurrency.data.repository.RepositoryImpl
 import com.example.privatecurrency.data.retrofit.ServicePrivate
-import com.example.privatecurrency.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -28,12 +25,6 @@ object AppModule {
             .create(ServicePrivate::class.java)
 
         return service
-    }
-
-    @Provides
-    @Singleton
-    fun provideRepository(service: ServicePrivate) : Repository {
-        return RepositoryImpl(service )
     }
 
 }
